@@ -1,8 +1,8 @@
-const template = require( "./routes-template" );
+const postRoute = require("./postRoute");
 
-const routes = app => {
-  app.use( ( req, res, next ) => {
-    res.setHeader( "Access-Control-Allow-Origin", "*" );
+const routes = (app) => {
+  app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
       "Access-Control-Allow-Methods",
       "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -11,12 +11,12 @@ const routes = app => {
       "Access-Control-Allow-Headers",
       "X-Requested-With, content-type, x-access-token, authorization"
     );
-    res.setHeader( "Access-Control-Allow-Credentials", true );
-    res.removeHeader( "X-Powered-By" );
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    res.removeHeader("X-Powered-By");
     next();
-  } );
+  });
 
-  app.use( "/", template );
+  app.use("/post", postRoute);
 };
 
 module.exports = routes;

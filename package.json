@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint -c .eslintrc.json ./* --ext .js",
     "test": "mocha test/* --reporter spec",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
