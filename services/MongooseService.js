@@ -3,7 +3,7 @@ class MongooseService {
    * @description Create an instance of the MongooseService class
    * @param Model {mongoose.model} Mongoose Model to use for the instance
    */
-  constructor ( Model ) {
+  constructor(Model) {
     this.model = Model;
   }
 
@@ -12,8 +12,8 @@ class MongooseService {
    * @param pipeline {array} Aggregate pipeline to execute
    * @returns {Promise} Returns the results of the query
    */
-  aggregate ( pipeline ) {
-    return this.model.aggregate( pipeline ).exec();
+  aggregate(pipeline) {
+    return this.model.aggregate(pipeline).exec();
   }
 
   /**
@@ -21,8 +21,8 @@ class MongooseService {
    * @param body {object} Body object to create the new document with
    * @returns {Promise} Returns the results of the query
    */
-  create ( body ) {
-    return this.model.create( body );
+  create(body) {
+    return this.model.create(body);
   }
 
   /**
@@ -30,8 +30,8 @@ class MongooseService {
    * @param query {object} Query to be performed on the Model
    * @returns {Promise} Returns the results of the query
    */
-  count ( query ) {
-    return this.model.count( query ).exec();
+  count(query) {
+    return this.model.count(query).exec();
   }
 
   /**
@@ -39,8 +39,8 @@ class MongooseService {
    * @param id {string} ID for the object to delete
    * @returns {Promise} Returns the results of the query
    */
-  delete ( id ) {
-    return this.model.findByIdAndDelete( id ).exec();
+  delete(id) {
+    return this.model.findByIdAndDelete(id).exec();
   }
 
   /**
@@ -49,11 +49,8 @@ class MongooseService {
    * @param field {string} The distinct field to retrieve
    * @returns {Promise} Returns the results of the query
    */
-  findDistinct ( query, field ) {
-    return this.model
-      .find( query )
-      .distinct( field )
-      .exec();
+  findDistinct(query, field) {
+    return this.model.find(query).distinct(field).exec();
   }
 
   /**
@@ -65,10 +62,10 @@ class MongooseService {
    * @param {object} [options] Optional options to provide query
    * @returns {Promise} Returns the results of the query
    */
-  findOne ( query, projection = { __v: 0 }, options = { lean: true } ) {
+  findOne(query, projection = { __v: 0 }, options = { lean: true }) {
     return this.model
-      .findOne( query, projection, options )
-      .select( { __v: 0 } )
+      .findOne(query, projection, options)
+      .select({ __v: 0 })
       .exec();
   }
 
@@ -82,11 +79,16 @@ class MongooseService {
    * @param {object} [options] Optional options to provide query
    * @returns {Promise} Returns the results of the query
    */
-  find ( query, projection = { __v: 0 }, sort = { id: 1 }, options = { lean: true } ) {
+  find(
+    query,
+    projection = { __v: 0 },
+    sort = { id: 1 },
+    options = { lean: true }
+  ) {
     return this.model
-      .find( query, projection, options )
-      .sort( sort )
-      .select( { __v: 0 } )
+      .find(query, projection, options)
+      .sort(sort)
+      .select({ __v: 0 })
       .exec();
   }
 
@@ -99,10 +101,8 @@ class MongooseService {
    * @param {object} [options] Optional: options to provide query
    * @returns {Promise} Returns the results of the query
    */
-  findById ( id, projection = { __v: 0 }, options = { lean: true } ) {
-    return this.model
-      .findById( id, projection, options )
-      .exec();
+  findById(id, projection = { __v: 0 }, options = { lean: true }) {
+    return this.model.findById(id, projection, options).exec();
   }
 
   /**
@@ -112,10 +112,8 @@ class MongooseService {
    * @param {object} [options] Optional options to provide query
    * @returns {Promise} Returns the results of the query
    */
-  update ( id, body, options = { lean: true, new: true } ) {
-    return this.model
-      .findByIdAndUpdate( id, body, options )
-      .exec();
+  update(id, body, options = { lean: true, new: true }) {
+    return this.model.findByIdAndUpdate(id, body, options).exec();
   }
 }
 
